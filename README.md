@@ -1,7 +1,7 @@
 # Inception Score Pytorch
 
 Pytorch was lacking code to calculate the Inception Score for GANs. This repository fills this gap.
-However, we do not recommend using the Inception Score to evaluate generative models, see [our note](https://arxiv.org/abs/1801.01973) for why.
+However, we do not recommend using the Inception Score to evaluate generative models, see [this note](https://arxiv.org/abs/1801.01973) for why.
 
 ## Getting Started
 
@@ -16,11 +16,12 @@ To generate random 64x64 images and calculate the inception score, do the follow
 $ python inception_score.py
 ```
 
-The only function is `inception_score`. It takes a list of numpy images normalized to the range [0,1] and a set of arguments and then calculates the inception score. Please assure your images are 299x299x3 and if not (e.g. your GAN was trained on CIFAR), pass `resize=True` to the function to have it automatically resize using bilinear interpolation before passing the images to the inception network.
-
 Currently, it is tested on Visual Genome Dataset.
 (1) If calculating inception score for real images, set real_images_inception_score = True and generated_images_inception_score = False
 (1) If calculating inception score for generated images, set real_images_inception_score = False and generated_images_inception_score = True
+
+The only function is `inception_score`. It takes a list of numpy images normalized to the range [0,1] and a set of arguments and then calculates the inception score. Please assure your images are 299x299x3 and if not (e.g. your GAN was trained on CIFAR), pass `resize=True` to the function to have it automatically resize using bilinear interpolation before passing the images to the inception network.
+
 
 ```python
 def inception_score(imgs, cuda=True, batch_size=32, resize=False):
