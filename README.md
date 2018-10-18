@@ -7,7 +7,7 @@ However, we do not recommend using the Inception Score to evaluate generative mo
 
 Clone the repository and navigate to it:
 ```
-$ git clone git@github.com:sbarratt/inception-score-pytorch.git
+$ git clone https://github.com/LiliMeng/inception-score-GAN-pytorch.git
 $ cd inception-score-pytorch
 ```
 
@@ -17,6 +17,10 @@ $ python inception_score.py
 ```
 
 The only function is `inception_score`. It takes a list of numpy images normalized to the range [0,1] and a set of arguments and then calculates the inception score. Please assure your images are 299x299x3 and if not (e.g. your GAN was trained on CIFAR), pass `resize=True` to the function to have it automatically resize using bilinear interpolation before passing the images to the inception network.
+
+Currently, it is tested on Visual Genome Dataset.
+(1) If calculating inception score for real images, set real_images_inception_score = True and generated_images_inception_score = False
+(1) If calculating inception score for generated images, set real_images_inception_score = False and generated_images_inception_score = True
 
 ```python
 def inception_score(imgs, cuda=True, batch_size=32, resize=False):
